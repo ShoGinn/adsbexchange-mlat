@@ -14,8 +14,8 @@ FROM base as builder
 RUN apk add --no-cache curl ca-certificates python3-dev gcc libc-dev
 RUN pip3 install --upgrade shiv importlib-resources==0.8
 
-ARG MLAT_CLIENT_VERSION
-ARG MLAT_CLIENT_HASH
+ARG MLAT_CLIENT_VERSION=3c3538b53363f5e0bf4271cef20be4cea79d052f
+ARG MLAT_CLIENT_HASH=31d64bb26e550632e45d7107ff766573fcc5c28ee014462d866420b810b57910
 
 RUN curl --output mlat-client.tar.gz -L "https://github.com/ShoGinn/mlat-client/archive/${MLAT_CLIENT_VERSION}.tar.gz" && \
     sha256sum mlat-client.tar.gz && echo "${MLAT_CLIENT_HASH}  mlat-client.tar.gz" | sha256sum -c

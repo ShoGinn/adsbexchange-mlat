@@ -41,6 +41,7 @@ steps:
   image: docker
   environment:
     DOCKER_ARCH: arm
+    DOCKER_HOST: tcp://docker:2375
     DOCKER_USER:
       from_secret: DOCKER_USER
     DOCKER_PASS:
@@ -66,6 +67,7 @@ steps:
   image: docker
   environment:
     DOCKER_ARCH: arm64
+    DOCKER_HOST: tcp://docker:2375
     DOCKER_USER:
       from_secret: DOCKER_USER
     DOCKER_PASS:
@@ -95,6 +97,7 @@ steps:
 - name: build
   image: docker
   environment:
+    DOCKER_HOST: tcp://docker:2375
     DOCKER_USER:
       from_secret: DOCKER_USER
     DOCKER_PASS:

@@ -7,6 +7,11 @@ platform:
   arch: amd64
 
 steps:
+- name: submodules
+  image: docker:git
+  commands:
+  - git submodule update --init --recursive
+
 - name: build
   image: docker
   environment:
@@ -27,6 +32,11 @@ platform:
   arch: arm
 
 steps:
+- name: submodules
+  image: docker:git
+  commands:
+  - git submodule update --init --recursive
+
 - name: build
   image: docker
   environment:
@@ -47,6 +57,11 @@ platform:
   arch: arm64
 
 steps:
+- name: submodules
+  image: docker:git
+  commands:
+  - git submodule update --init --recursive
+
 - name: build
   image: docker
   environment:
@@ -72,6 +87,11 @@ depends_on:
 - arm64
 
 steps:
+- name: submodules
+  image: docker:git
+  commands:
+  - git submodule update --init --recursive
+
 - name: build
   image: docker
   environment:

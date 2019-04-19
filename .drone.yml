@@ -13,7 +13,7 @@ steps:
   - git submodule update --init --recursive
 
 - name: build
-  image: docker
+  image: plugins/docker
   environment:
     DOCKER_ARCH: amd64
     DOCKER_USER:

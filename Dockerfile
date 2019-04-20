@@ -19,7 +19,7 @@ ARG MLAT_CLIENT_HASH=31d64bb26e550632e45d7107ff766573fcc5c28ee014462d866420b810b
 
 RUN curl --output mlat-client.tar.gz -L "https://github.com/ShoGinn/mlat-client/archive/${MLAT_CLIENT_VERSION}.tar.gz" && \
     sha256sum mlat-client.tar.gz && echo "${MLAT_CLIENT_HASH}  mlat-client.tar.gz" | sha256sum -c
-run shiv -c mlat-client -o /usr/local/bin/mlat-client /mlat-client.tar.gz
+RUN shiv -c mlat-client -o /usr/local/bin/mlat-client /mlat-client.tar.gz
 
 FROM base
 

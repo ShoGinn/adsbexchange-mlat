@@ -24,8 +24,8 @@ RUN pip3 install mlat-client.tar.gz
 
 FROM base
 
-COPY --from=builder /usr/bin/mlat-client
-COPY --from=builder /usr/lib/python3.6/site-packages/mlat
+COPY --from=builder /usr/bin/mlat-client /usr/bin/mlat-client
+COPY --from=builder /usr/lib/python3.6/site-packages/mlat /usr/lib/python3.6/site-packages/mlat
 COPY mlat-client-runner.sh /usr/bin/mlat-client-runner
 
 ENTRYPOINT ["mlat-client-runner"]

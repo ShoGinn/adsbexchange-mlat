@@ -6,15 +6,20 @@ RUN apk add --no-cache python3 && \
 
 FROM --platform=$TARGETPLATFORM $BASE as builder
 
-RUN apk add --no-cache curl ca-certificates python3 python3-dev gcc libc-dev
-RUN pip3 install --upgrade shiv importlib-resources==0.8
+RUN apk add --no-cache \
+	curl \
+	ca-certificates \
+	python3 \
+	python3-dev \
+	gcc
 
-ARG MLAT_CLIENT_VERSION=3c3538b53363f5e0bf4271cef20be4cea79d052f
-ARG MLAT_CLIENT_HASH=31d64bb26e550632e45d7107ff766573fcc5c28ee014462d866420b810b57910
+ARG MLAT_CLIENT_VERSION=v0.2.10
+ARG MLAT_CLIENT_HASH=8a570fd502bbba39b37175eff6dbab8372ed1a878266ff96fb33cd65f46eacef
 
-RUN curl --output mlat-client.tar.gz -L "https://github.com/ShoGinn/mlat-client/archive/${MLAT_CLIENT_VERSION}.tar.gz" && \
+RUN curl --output mlat-client.tar.gz -L "https://github.com/mutability/mlat-client/archive/{MLAT_CLIENT_VERSION}.tar.gz" && \
     sha256sum mlat-client.tar.gz && echo "${MLAT_CLIENT_HASH}  mlat-client.tar.gz" | sha256sum -c
-RUN shiv -c mlat-client -o /usr/local/bin/mlat-client /mlat-client.tar.gz
+
+RUN pip3 install mlat-client.tar.gz
 
 FROM base
 

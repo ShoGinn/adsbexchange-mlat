@@ -26,7 +26,7 @@ FROM base
 
 COPY --from=builder /usr/bin/mlat-client /usr/bin/mlat-client
 COPY --from=builder /usr/lib/python3.6/site-packages/mlat /usr/lib/python3.6/site-packages/mlat
-COPY --from=builder /usr/lib/python3.6/site-packages/_modes.cpython-36m-x86_64-linux-gnu.so /usr/lib/python3.6/site-packages/_modes.cpython-36m-x86_64-linux-gnu.so
+COPY --from=builder /usr/lib/python3.6/site-packages/_modes.cpython* /usr/lib/python3.6/site-packages/
 COPY mlat-client-runner.sh /usr/bin/mlat-client-runner
 COPY mlat-client-runner.sh /usr/bin/mlat-client-runner
 

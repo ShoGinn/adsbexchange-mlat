@@ -11,7 +11,8 @@ RUN apk add --no-cache \
 	ca-certificates \
 	python3 \
 	python3-dev \
-	gcc
+	gcc \
+  libc-dev
 
 ARG MLAT_CLIENT_VERSION=v0.2.10
 ARG MLAT_CLIENT_HASH=8a570fd502bbba39b37175eff6dbab8372ed1a878266ff96fb33cd65f46eacef

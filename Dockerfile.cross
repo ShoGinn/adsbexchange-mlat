@@ -1,11 +1,6 @@
 ARG BASE=alpine
 FROM $BASE as base
 
-ARG arch=none
-ENV ARCH=$arch
-
-COPY qemu/qemu-$ARCH-static* /usr/bin/
-
 RUN apk add --no-cache python3 && \
     rm -rf /usr/share/terminfo
 

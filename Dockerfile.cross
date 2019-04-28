@@ -1,4 +1,4 @@
-ARG BASE=alpine
+ARG BASE
 FROM $BASE as base
 
 RUN apk add --no-cache python3 && \
@@ -27,17 +27,25 @@ FROM base
 COPY --from=builder /usr/bin/mlat-client /usr/bin/mlat-client
 COPY --from=builder /usr/lib/python3.6/site-packages/mlat /usr/lib/python3.6/site-packages/mlat
 COPY --from=builder /usr/lib/python3.6/site-packages/_modes.cpython* /usr/lib/python3.6/site-packages/
-COPY mlat-client-runner.sh /usr/bin/mlat-client-runner
+
 COPY mlat-client-runner.sh /usr/bin/mlat-client-runner
 
 ENTRYPOINT ["mlat-client-runner"]
 
 # Metadata
-ARG VCS_REF="Unknown"
-LABEL maintainer="ginnserv@gmail.com" \
-      org.label-schema.name="Docker ADS-B - adsbexchange-mlat" \
-      org.label-schema.description="Docker container for ADS-B - This is the adsbexchange.com (MLAT) component" \
-      org.label-schema.url="https://github.com/ShoGinn/adsbexchange-mlat" \
-      org.label-schema.vcs-ref="${VCS_REF}" \
-      org.label-schema.vcs-url="https://github.com/ShoGinn/adsbexchange-mlat" \
-      org.label-schema.schema-version="1.0"
+ARG MAINTAINER
+ARG NAME
+ARG DESCRIPTION
+ARG URL
+ARG BUILD_DATE
+ARG VCS_URL
+ARG VCS_REF
+
+LABEL maintainer="${MAINTAINER}" \
+  org.label-schema.build-date="${BUILD_DATE}" \
+  org.label-schema.name="${NAME}" \
+  org.label-schema.description="${DESCRIPTION}" \
+  org.label-schema.url="${URL}" \
+  org.label-schema.vcs-ref="${VCS_REF}" \
+  org.label-schema.vcs-url="${VCS_URL}" \
+  org.label-schema.schema-version="1.0"

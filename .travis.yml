@@ -47,7 +47,12 @@ before_script:
 
 script:
   - sudo bash travis/build.sh
-  - sudo bash travis/deploy.sh
+
+deploy:
+  provider: script
+  script: sudo bash travis/deploy.sh
+  on:
+    branch: master
 
 after_success:
 

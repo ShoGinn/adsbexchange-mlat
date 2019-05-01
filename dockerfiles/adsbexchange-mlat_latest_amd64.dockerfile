@@ -1,4 +1,3 @@
-ARG BASE
 FROM $BASE as base
 
 RUN apk add --no-cache python3 && \
@@ -24,28 +23,10 @@ RUN pip3 install mlat-client.tar.gz
 
 FROM base
 
+COPY rootfs /
+
 COPY --from=builder /usr/bin/mlat-client /usr/bin/mlat-client
 COPY --from=builder /usr/lib/python3.6/site-packages/mlat /usr/lib/python3.6/site-packages/mlat
 COPY --from=builder /usr/lib/python3.6/site-packages/_modes.cpython* /usr/lib/python3.6/site-packages/
 
-COPY mlat-client-runner.sh /usr/bin/mlat-client-runner
-
-ENTRYPOINT ["mlat-client-runner"]
-
-# Metadata
-ARG MAINTAINER
-ARG NAME
-ARG DESCRIPTION
-ARG URL
-ARG BUILD_DATE
-ARG VCS_URL
-ARG VCS_REF
-
-LABEL maintainer="${MAINTAINER}" \
-  org.label-schema.build-date="${BUILD_DATE}" \
-  org.label-schema.name="${NAME}" \
-  org.label-schema.description="${DESCRIPTION}" \
-  org.label-schema.url="${URL}" \
-  org.label-schema.vcs-ref="${VCS_REF}" \
-  org.label-schema.vcs-url="${VCS_URL}" \
-  org.label-schema.schema-version="1.0"
+ENTRYPOINT ["/usr/local/bin/docker_entrypoint.sh"]

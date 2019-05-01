@@ -1,9 +1,9 @@
-FROM $BASE as base
+FROM alpine as base
 
 RUN apk add --no-cache python3 && \
     rm -rf /usr/share/terminfo
 
-FROM --platform=$TARGETPLATFORM $BASE as builder
+FROM --platform=$TARGETPLATFORM alpine as builder
 
 RUN apk add --no-cache \
 	curl \

@@ -1,6 +1,6 @@
 FROM alpine as base
 
-RUN apk add --no-cache python3 && \
+RUN apk add --no-cache python3 bash && \
     rm -rf /usr/share/terminfo
 
 FROM --platform=$TARGETPLATFORM alpine as builder

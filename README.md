@@ -18,11 +18,7 @@ You must first have a running setup for before using this container as it will n
 
 # Container Setup
 
-Env variables must be passed to the container containing the adsbexchange required items
-
-### Defaults
-* Port 30104/tcp is exposed in case you need external inputs (but not a requirement)
-
+Env variables must be passed to the container containing the required items
 
 ### User Configured
 * DUMP1090_SERVER -- defaults to dump1090 

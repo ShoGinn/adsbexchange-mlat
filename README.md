@@ -1,5 +1,9 @@
-# adsbexchange-mlat
-Docker container ADSBexchange.com Feeder using the mutability MLAT client
+# mlat feeder
+Docker container using the mutability MLAT client for feeding any service
+
+You can use this for Radar Box 24 as well:
+
+Just keep the items the same and add MLAT_SERVER mlat1.rb24.com with MLAT_SERVER_PORT 40900
 
 This is part of a suite of applications that can be used if you have a dump1090 compatible device including:
 * Any RTLSDR USB device
@@ -17,16 +21,18 @@ You must first have a running setup for before using this container as it will n
 Env variables must be passed to the container containing the adsbexchange required items
 
 ### Defaults
-* DUMP1090_SERVER=dump1090 -- make sure your dump1090 container is named this and on the same network
-* DUMP1090_PORT=30005 -- default port
 * Port 30104/tcp is exposed in case you need external inputs (but not a requirement)
 
 
 ### User Configured
+* DUMP1090_SERVER -- defaults to dump1090 
+* DUMP1090_PORT -- defaults to 30005
 * MLAT_CLIENT_LATITUDE - Decimal format latitude of your ADSB Antenna
 * MLAT_CLIENT_LONGITUDE - Decimal format longitude of your ADSB Antenna
 * MLAT_CLIENT_ALTITUDE - Decimal format altitude (asl) of your ADSB Antenna
-* MLAT_CLIENT_USER - Your ADSBexchange.com username
+* MLAT_CLIENT_USER - Your username for your feed 
+* MLAT_SERVER - The feeder server (defaults to adsbexchange -- feed.adsbexchange.com)
+* MLAT_SERVER_PORT - the feeder port  (defaults to adsbexchange port -- 31090)
 
 #### Example docker run
 

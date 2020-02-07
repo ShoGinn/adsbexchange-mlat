@@ -13,12 +13,12 @@ RUN apk add --no-cache \
 	gcc \
 	libc-dev
 
-ARG MLAT_CLIENT_VERSION=v0.2.10
-ARG MLAT_CLIENT_HASH=8a570fd502bbba39b37175eff6dbab8372ed1a878266ff96fb33cd65f46eacef
+ARG MLAT_CLIENT_VERSION=v0.2.11
+ARG MLAT_CLIENT_HASH=924f4c97f2664c2a9bbf96e0de514ae4aaa0b1caed81e66b0639e354fdc19c01
 
 RUN curl --output mlat-client.tar.gz -L "https://github.com/mutability/mlat-client/archive/${MLAT_CLIENT_VERSION}.tar.gz" && \
     sha256sum mlat-client.tar.gz && echo "${MLAT_CLIENT_HASH}  mlat-client.tar.gz" | sha256sum -c
-RUN pip3 install --upgrade shiv importlib-resources==0.8
+RUN pip3 install --upgrade shiv importlib-resources
 RUN \
 	tar -xvf mlat-client.tar.gz && \
 	cd mlat-client-0.2.10 && \

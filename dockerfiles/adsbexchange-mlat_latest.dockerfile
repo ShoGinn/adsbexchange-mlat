@@ -1,17 +1,9 @@
-FROM python:alpine as base
+FROM alpine as base
 
-# RUN apk add --no-cache python3 bash && \
-# 	rm -rf /usr/share/terminfo
+RUN apk add --no-cache python3 && \
+	rm -rf /usr/share/terminfo
 
 FROM --platform=$TARGETPLATFORM python as builder
-
-# RUN apk add --no-cache \
-# 	curl \
-# 	ca-certificates \
-# 	python3 \
-# 	python3-dev \
-# 	gcc \
-# 	libc-dev
 
 ARG MLAT_CLIENT_VERSION=0.2.11
 ARG MLAT_CLIENT_HASH=924f4c97f2664c2a9bbf96e0de514ae4aaa0b1caed81e66b0639e354fdc19c01

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -o errexit          # Exit on most errors (see the manual)
 #set -o errtrace         # Make sure any error trap is inherited

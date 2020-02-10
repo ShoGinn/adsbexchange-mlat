@@ -51,7 +51,7 @@ shoginn/adsbexchange-mlat:latest-amd64
 
 | branch | Status |
 |--------|--------|
-| master | [![Build Status](https://travis-ci.org/ShoGinn/adsbexchange-mlat.svg?branch=master)](https://travis-ci.org/ShoGinn/adsbexchange-mlat) |
+| master | [![Build Status](https://travis-ci.com/ShoGinn/adsbexchange-mlat.svg?branch=master)](https://travis-ci.com/ShoGinn/adsbexchange-mlat) |
 
 | Arch | Size/Layers | Commit |
 |------|-------------|--------|

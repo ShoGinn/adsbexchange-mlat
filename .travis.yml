@@ -42,7 +42,7 @@ deploy:
   on:
     branch: master
 
-after_success:
+after_deploy:
   - sudo bash travis/success.sh
 
 notifications:

@@ -43,8 +43,7 @@ deploy:
     branch: master
 
 after_success:
-  provider: script
-  script: sudo bash travis/deploy.sh
+  - sudo bash travis/success.sh
 
 notifications:
   email:

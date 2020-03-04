@@ -23,6 +23,7 @@ install:
   - curl -ksSl -o ./travis/enable-experimental-docker.sh "https://raw.githubusercontent.com/ShoGinn/docker-builds/master/travis/enable-experimental-docker.sh"
   - curl -ksSl -o ./travis/build.sh "https://raw.githubusercontent.com/ShoGinn/docker-builds/master/travis/build.sh"
   - curl -ksSl -o ./travis/deploy.sh "https://raw.githubusercontent.com/ShoGinn/docker-builds/master/travis/deploy.sh"
+  - curl -ksSl -o ./travis/success.sh "https://raw.githubusercontent.com/ShoGinn/docker-builds/master/travis/success.sh"
   - sudo bash travis/enable-experimental-docker.sh
   - sudo docker version
 
@@ -42,6 +43,8 @@ deploy:
     branch: master
 
 after_success:
+  provider: script
+  script: sudo bash travis/deploy.sh
 
 notifications:
   email:

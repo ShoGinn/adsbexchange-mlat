@@ -1,0 +1,2 @@
+DOCKER_DESCRIPTION="Docker container for ADS-B - This is the adsbexchange.com (MLAT) component"
+DOCKER_NAME="adsbexchange-mlat"

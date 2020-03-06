@@ -2,8 +2,8 @@
 
 set -o errexit # Exit on most errors (see the manual)
 #set -o errtrace         # Make sure any error trap is inherited
-set -o nounset  # Disallow expansion of unset variables
-set -o pipefail # Use last non-zero exit code in a pipeline
+set -o nounset # Disallow expansion of unset variables
+#set -o pipefail # Use last non-zero exit code in a pipeline
 #set -o xtrace          # Trace the execution of the script (debug)
 
 DUMP1090_SERVER=${DUMP1090_SERVER:=dump1090}
@@ -20,9 +20,9 @@ ping -c 3 "${DUMP1090_SERVER}"
 echo "Connecting to ${DUMP1090_SERVER}:${DUMP1090_PORT} to send to ${MLAT_SERVER}:${MLAT_SERVER_PORT}"
 exec mlat-client --input-type 'dump1090' \
     --input-connect "${DUMP1090_SERVER}:${DUMP1090_PORT}" \
-    --lat "${MLAT_CLIENT_LATITUDE}" \
-    --lon "${MLAT_CLIENT_LONGITUDE}" \
-    --alt "${MLAT_CLIENT_ALTITUDE}" \
+    --lat "${DUMP1090_LAT}" \
+    --lon "${DUMP1090_LON}" \
+    --alt "${DUMP1090_ALT}" \
     --user "${MLAT_CLIENT_USER}" \
     --server "${MLAT_SERVER}:${MLAT_SERVER_PORT}" \
     --no-udp \
